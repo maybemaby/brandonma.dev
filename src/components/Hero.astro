@@ -1,0 +1,214 @@
+---
+
+---
+
+<section id="hero">
+  <div id="drawing-revs">
+    <div class="header">REV</div>
+    <div class="header">DESCRIPTION</div>
+    <div class="header">DATE</div>
+    <div class="content">MA</div>
+    <div class="content">RELEASE TO WORLD</div>
+    <div class="content">08/30</div>
+    <div class="content"></div>
+    <div class="content"></div>
+    <div class="content"></div>
+  </div>
+  <div id="drawing-info">
+    <div class="name">
+      <p>NAME:</p>
+      <p>BRANDON</p>
+    </div>
+    <div class="part-info">
+      <div class="part-number">PN: 000002-000</div>
+      <div class="rev">REV: MA</div>
+    </div>
+  </div>
+  <div id="drawing-main">placeholder</div>
+</section>
+<nav class="flex items-center justify-around text-xl sm:text-4xl py-6">
+  <a href="/blog">Blog</a>
+  <a href="/projects">Projects</a>
+  <a href="/about">About</a>
+</nav>
+
+<style scoped>
+  #hero {
+    font-family: "Gothic A1", Arial, Helvetica, sans-serif;
+    --border-s: 2px solid hsl(var(--foreground));
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    border: var(--border-s);
+    width: 100%;
+    height: 90svh;
+  }
+
+  #drawing-info {
+    position: relative;
+    grid-column: 1 / 13;
+    grid-row: 10 / 13;
+    border: var(--border-s);
+    border-bottom: none;
+    border-right: none;
+  }
+
+  #drawing-info .name {
+    display: flex;
+    font-size: 1.1rem;
+    color: hsl(var(--foreground));
+    padding: 0rem 0.5rem;
+    height: 4rem;
+    width: 100%;
+    border-bottom: var(--border-s);
+  }
+
+  .name > p {
+    margin: 0;
+    padding: 0;
+    height: fit-content;
+  }
+
+  .name p:nth-of-type(2) {
+    align-self: center;
+    margin: 0 auto;
+  }
+
+  #drawing-info .part-info {
+    display: flex;
+    width: 100%;
+  }
+
+  .part-info > div {
+    padding: 0.5rem;
+    border-bottom: var(--border-s);
+  }
+
+  .part-info .part-number {
+    border-right: var(--border-s);
+    flex-grow: 1;
+  }
+
+  #drawing-revs {
+    grid-column: 1 / 13;
+    grid-row: 1 / 2;
+    border: var(--border-s);
+    border-top: none;
+    border-right: none;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  #drawing-revs .header {
+    text-align: center;
+    padding: 0.25rem;
+    border-bottom: var(--border-s);
+    border-right: var(--border-s);
+  }
+
+  #drawing-revs .header:nth-of-type(3) {
+    border-right: none;
+  }
+
+  #drawing-revs .content {
+    text-align: center;
+    padding: 0.25rem;
+    border-bottom: var(--border-s);
+    border-right: var(--border-s);
+  }
+
+  /* Every 3rd content */
+  #drawing-revs .content.content:nth-of-type(3n) {
+    border-right: none;
+  }
+
+  /* Last 3 */
+  #drawing-revs .content:nth-last-of-type(-n + 3) {
+    border-bottom: none;
+  }
+
+  #drawing-main {
+    grid-column: 1 / 13;
+    grid-row: 1 / 13;
+    place-self: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    #drawing-revs {
+      grid-column: 6 / 13;
+      grid-row: 1 / 2;
+    }
+
+    #drawing-info {
+      grid-column: 8 /13;
+      grid-row: 10 / 13;
+    }
+
+    #drawing-main {
+      grid-column: 1 / 10;
+      grid-row: 1 / 10;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    #drawing-revs {
+      grid-column: 9 / 13;
+      grid-row: 1 / 2;
+    }
+  }
+
+  nav {
+    font-family:
+      "Geist Sans",
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
+  }
+
+  nav > a {
+    position: relative;
+    z-index: 100;
+    padding: 0 1rem;
+    transition: color 0.5s;
+    outline: none;
+  }
+
+  nav > a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    height: 100%;
+    background-color: hsl(var(--foreground));
+    z-index: -1;
+  }
+
+  nav > a:hover,
+  nav > a:focus {
+    color: white;
+  }
+
+  nav > a:hover::before,
+  nav > a:focus::before {
+    animation: reveal 0.35s forwards;
+  }
+
+  @keyframes reveal {
+    0% {
+      right: 100%;
+    }
+    100% {
+      right: 0;
+    }
+  }
+</style>
