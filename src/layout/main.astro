@@ -1,0 +1,69 @@
+---
+import type { ComponentProps } from "astro/types";
+import Base from "./base.astro";
+import LogosGithubIcon from "~icons/logos/github-icon";
+
+type BaseLayoutProps = ComponentProps<typeof Base>;
+
+interface Props extends BaseLayoutProps {}
+
+const { title } = Astro.props;
+---
+
+<Base title={title}>
+  <header class="p-2 pt-6 max-w-screen-lg w-full mx-auto flex flex-col gap-2">
+    <div class="flex items-end justify-between w-full">
+      <a href="/">
+        <p id="logo" class="text-xl font-semibold">brandma</p>
+      </a>
+      <nav class="flex items-end gap-4 text-lg">
+        <a href="/blog" class="text-blue-500 hover:text-blue-600">Blog</a>
+        <a href="/projects" class="text-blue-500 hover:text-blue-600"
+          >Projects</a
+        >
+        <a href="/about" class="text-blue-500 hover:text-blue-600">About</a>
+      </nav>
+    </div>
+    <div class="self-end">
+      <a href="https://github.com/maybemaby" target="_blank">
+        <span class="sr-only">GitHub link</span>
+        <span class="text-lg bg-slate-200 rounded-full block p-1">
+          <LogosGithubIcon />
+        </span>
+      </a>
+    </div>
+  </header>
+  <main class="p-2 max-w-screen-lg w-full mx-auto">
+    <slot />
+  </main>
+</Base>
+
+<style>
+  #logo {
+    font-family: "Gothic A1", Arial, Helvetica, sans-serif;
+    position: relative;
+    padding: 0 0.2rem;
+    color: hsl(var(--white));
+  }
+
+  #logo::before {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    bottom: 0;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: theme("colors.blue.600");
+    animation: highlight 0.5s forwards;
+  }
+
+  @keyframes highlight {
+    0% {
+      top: 100%;
+    }
+    100% {
+      top: 0;
+    }
+  }
+</style>
