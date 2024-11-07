@@ -1,0 +1,44 @@
+.blog-content h1 {
+  @apply text-2xl font-bold mb-10 text-blue-600;
+}
+
+.blog-content h2 {
+  @apply text-xl font-semibold my-2;
+}
+
+.blog-content h3 {
+  @apply text-xl font-semibold my-2;
+}
+
+.blog-content p {
+  @apply leading-relaxed py-3 max-w-[62ch];
+}
+
+.blog-content a {
+  @apply text-blue-400 underline;
+}
+
+.blog-content a:visited {
+  @apply text-blue-500;
+}
+
+blockquote {
+  @apply border-l-4 border-blue-400 pl-4 my-4 bg-card rounded-r-md max-w-[70ch];
+}
+
+strong {
+  @apply font-bold;
+}
+
+.blog-content pre {
+  @apply p-3 rounded-md my-3;
+}
+
+.blog-content ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}
+
+.blog-content li {
+  @apply max-w-[62ch];
+}

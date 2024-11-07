@@ -16,7 +16,9 @@ const { title, publishedAt, previewText, slug } = Astro.props;
   <p class="text-muted-foreground mb-2 text-sm">
     {publishedAt.toLocaleDateString()}
   </p>
-  <p class="line-clamp-2 leading-relaxed max-w-[58ch]">{previewText}</p>
+  <p class="line-clamp-2 leading-relaxed max-w-[58ch] font-light">
+    {previewText}
+  </p>
   <a href={`/blog/${slug}`} class="text-blue-500 hover:text-blue-600">
     Read more
   </a>
