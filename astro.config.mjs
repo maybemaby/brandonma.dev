@@ -6,9 +6,12 @@ import tailwind from "@astrojs/tailwind";
 
 import sitemap from "@astrojs/sitemap";
 
+import cloudflare from "@astrojs/cloudflare";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://brandonma.dev",
+
   integrations: [
     svelte(),
     tailwind({
@@ -16,6 +19,7 @@ export default defineConfig({
     }),
     sitemap({}),
   ],
+
   vite: {
     plugins: [
       Icons({
@@ -24,4 +28,7 @@ export default defineConfig({
       }),
     ],
   },
+
+  output: "hybrid",
+  adapter: cloudflare(),
 });
