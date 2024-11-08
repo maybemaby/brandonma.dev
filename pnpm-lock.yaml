@@ -63,6 +63,9 @@ importers:
       unplugin-icons:
         specifier: ^0.19.3
         version: 0.19.3
+      wrangler:
+        specifier: ^3.86.0
+        version: 3.86.0(@cloudflare/workers-types@4.20241106.0)
 
 packages:
 
