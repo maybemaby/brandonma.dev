@@ -19,8 +19,11 @@ export const server = {
         return { success: true };
       }
 
-      const apiUrl = import.meta.env.CONTACT_API;
-      const apiKey = import.meta.env.CONTACT_API_KEY;
+      const apiUrl =
+        import.meta.env.CONTACT_API ?? context.locals.runtime.env.CONTACT_API;
+      const apiKey =
+        import.meta.env.CONTACT_API_KEY ??
+        context.locals.runtime.env.CONTACT_API_KEY;
 
       if (!apiUrl || !apiKey) {
         console.error("Missing CONTACT_API or CONTACT_API_KEY");
