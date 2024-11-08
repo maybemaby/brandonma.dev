@@ -138,7 +138,7 @@ You can declare points and linestrings like so:
 ```go
 // geom.Coord is a type alias for []float64
 
-// Specify the use of 2D coordinates, set the SRID to 4326, and
+// Specify the use of 2D coordinates, set the SRID to 4326, and pass in the coordinates
 pt := geom.NewPoint(geom.XY).SetSRID(4326).MustSetCoords(geom.Coord{45.52515498907135, -73.57520521798992})
 
 // Linestring with 3 segments
@@ -258,15 +258,15 @@ if err != nil {
 }
 
 for _, favPlace := range favPlaces {
-	println(favPlace.Name)
+	fmt.Printf("%s at %f, %f\n", favPlace.Name, favPlace.Coordinates.X(), favPlace.Coordinates.Y())
 }
 
 // Output:
-// St-Viateur Bagel
-// Kem CoBa
+// St-Viateur Bagel at -73.601989, 45.522825
+// Kem CoBa at -73.595185, 45.523093
 ```
 
-You should see that only St-Viateur and Kem CoBa are returned, as Ma Poule Mouillée is farther than 100 meters from the route.
+You should see that only St-Viateur and Kem CoBa are returned, as Ma Poule Mouillée is farther than 100 meters from the route. You can also see that it decoded the coordinates column as a `geom.Point` type.
 
 ## Wrapping up
 

@@ -2,6 +2,7 @@
 import type { ComponentProps } from "astro/types";
 import Base from "./base.astro";
 import LogosGithubIcon from "~icons/logos/github-icon";
+import ThemeToggle from "$lib/components/ThemeToggle.astro";
 
 type BaseLayoutProps = ComponentProps<typeof Base>;
 
@@ -22,7 +23,8 @@ const { title, description } = Astro.props;
         <a href="/about" class="hover:text-blue-500">About</a>
       </nav>
     </div>
-    <div class="self-end">
+    <div class="self-end flex items-center gap-3">
+      <ThemeToggle />
       <a href="https://github.com/maybemaby" target="_blank">
         <span class="sr-only">GitHub link</span>
         <span class="text-lg bg-slate-200 rounded-full block p-1">
