@@ -10,11 +10,12 @@ export const server = {
       topic: z.string().optional(),
     }),
     async handler(input, context) {
-      if (input.topic) {
+      if (input.topic && input.topic.length > 0) {
         const userAgent = context.request.headers.get("user-agent");
         console.warn(
           "Received topic field honeypot in contact form, user-agent:",
-          userAgent
+          userAgent,
+          input.topic
         );
         return { success: true };
       }
