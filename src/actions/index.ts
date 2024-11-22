@@ -7,19 +7,8 @@ export const server = {
     input: z.object({
       email: z.string().email(),
       message: z.string().min(1).max(1000),
-      topic: z.string().optional(),
     }),
     async handler(input, context) {
-      if (input.topic && input.topic.length > 0) {
-        const userAgent = context.request.headers.get("user-agent");
-        console.warn(
-          "Received topic field honeypot in contact form, user-agent:",
-          userAgent,
-          input.topic
-        );
-        return { success: true };
-      }
-
       const apiUrl =
         import.meta.env.CONTACT_API ?? context.locals.runtime.env.CONTACT_API;
       const apiKey =
