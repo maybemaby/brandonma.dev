@@ -12,7 +12,9 @@ const { title, description } = Astro.props;
 ---
 
 <Base title={title} description={description}>
-  <header class="p-2 pt-6 max-w-screen-lg w-full mx-auto flex flex-col gap-2">
+  <header
+    class="p-2 pt-6 max-w-(--breakpoint-lg) w-full mx-auto flex flex-col gap-2"
+  >
     <div class="flex items-end justify-between w-full">
       <a href="/">
         <p id="logo" class="text-xl font-semibold">brandma</p>
@@ -33,7 +35,7 @@ const { title, description } = Astro.props;
       </a>
     </div>
   </header>
-  <main class="p-2 max-w-screen-lg w-full mx-auto">
+  <main class="p-2 max-w-(--breakpoint-lg) w-full mx-auto">
     <slot />
   </main>
 </Base>
@@ -54,7 +56,7 @@ const { title, description } = Astro.props;
     top: 100%;
     left: 0;
     right: 0;
-    background-color: theme("colors.blue.600");
+    background-color: var(--color-blue-600);
     animation: highlight 0.5s forwards;
   }
 

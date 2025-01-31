@@ -1,3 +1,7 @@
+@import 'tailwindcss';
+@config '../../tailwind.config.mjs';
+
+
 .blog-content h1 {
   @apply text-2xl font-bold mb-10 text-blue-600;
 }
