@@ -29,6 +29,8 @@ export default defineConfig({
     ],
   },
 
-  output: "hybrid",
-  adapter: cloudflare(),
+  output: "static",
+  adapter: cloudflare({
+    imageService: "compile",
+  }),
 });
