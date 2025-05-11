@@ -10,8 +10,10 @@ const result = Astro.getActionResult(actions.contact);
   title="About - Brandon Ma"
   description="Profile for Brandon Ma, Manufacturing Engineer and developer."
 >
-  <section id="about">
-    <h1 class="text-2xl mb-8 mt-3">About Me</h1>
+  <section id="about" class="font-reading">
+    <h1 class="text-2xl mb-8 mt-3 text-foreground font-sans font-medium">
+      About Me
+    </h1>
 
     <p class="leading-relaxed">
       During the day, I work primarily with hardware and manufacturing.
@@ -55,8 +57,7 @@ const result = Astro.getActionResult(actions.contact);
         name="message"
         class="w-full border border-gray-300 rounded-md p-1 text-black"
         required></textarea>
-      <button
-        class="mt-3 py-1 px-4 rounded-md bg-foreground text-primary-foreground"
+      <button class="mt-3 py-1 px-4 rounded-md bg-foreground text-background"
         >Send</button
       >
       {result?.error && <p class="text-red-500 mt-2">{result.error.message}</p>}

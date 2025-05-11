@@ -55,6 +55,10 @@
     --ring: 224 71.4% 4.1%;
 
     --radius: 0.5rem;
+
+    --font-reading: system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
   }
 
   html.light {

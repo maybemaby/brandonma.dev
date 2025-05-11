@@ -4,6 +4,17 @@ import Landing from "$lib/layout/landing.astro";
 import LucideArrowRight from "~icons/lucide/arrow-right";
 import MdiGithub from "~icons/mdi/github";
 import MdiLinkedin from "~icons/mdi/linkedin";
+import { getCollection } from "astro:content";
+
+const blogPosts = await getCollection("blog", (post) => {
+  if (!import.meta.env.PROD) {
+    return true;
+  }
+
+  return post.data.draft !== true;
+});
+
+const latestPosts = blogPosts.slice(0, 3);
 ---
 
 <Landing>
@@ -12,15 +23,21 @@ import MdiLinkedin from "~icons/mdi/linkedin";
       class="md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
     >
       <div class="bg-background w-fit p-1 overflow-clip">
-        <p class="text-4xl md:text-6xl">0000002 REV. MA</p>
-        <p class="opacity-0 text-xl md:text-2xl">MANUFACTURING ENGINEER</p>
+        <p class="font-semibold text-3xl sm:text-4xl lg:text-5xl">
+          0000002 REV. MA
+        </p>
+        <p class="opacity-0 text-xl font-semibold sm:text-xl lg:text-2xl">
+          MANUFACTURING ENGINEER
+        </p>
       </div>
     </div>
     <a
       href="/about"
       class="group/about md:col-span-2 bg-foreground md:h-[400px] p-8"
     >
-      <div class="text-3xl text-background inline-flex items-center gap-2">
+      <div
+        class="text-2xl text-background inline-flex items-center gap-2 font-semibold"
+      >
         ABOUT <LucideArrowRight
           class="group-hover/about:-rotate-45 group-focus-within/about:-rotate-45 group-active:-rotate-45 transition-transform duration-150"
         />
@@ -62,31 +79,23 @@ import MdiLinkedin from "~icons/mdi/linkedin";
         >
         </path>
       </svg>
-      <h2 class="text-accent text-3xl mb-8">BLOG</h2>
+      <h2 class="text-accent font-medium text-2xl mb-8">BLOG</h2>
       <div class="flex flex-col gap-4 mb-6">
-        <BlogPreview
-          title="Getting Started With PostGIS using Go"
-          publishedAt={new Date()}
-          previewText=""
-          slug="go-with-postgis"
-        />
-        <BlogPreview
-          title="Getting Started With PostGIS using Go"
-          publishedAt={new Date()}
-          previewText=""
-          slug="go-with-postgis"
-        />
-        <BlogPreview
-          title="Getting Started With PostGIS using Go"
-          publishedAt={new Date()}
-          previewText=""
-          slug="go-with-postgis"
-        />
+        {
+          latestPosts.map((post) => (
+            <BlogPreview
+              title={post.data.title}
+              publishedAt={post.data.publishedAt}
+              previewText={post.data.previewText}
+              slug={post.slug}
+            />
+          ))
+        }
       </div>
       <a href="/blog">See More</a>
     </div>
     <div class="md:col-span-3 bg-accent p-8">
-      <p class="text-background text-3xl">PLACEHOLDER</p>
+      <p class="text-background font-medium text-2xl">PLACEHOLDER</p>
     </div>
   </div>
   <div
