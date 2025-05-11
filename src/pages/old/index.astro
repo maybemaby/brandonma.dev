@@ -1,0 +1,55 @@
+---
+import Hero from "$lib/components/Hero.astro";
+import BaseLayout from "$lib/layout/base.astro";
+---
+
+<BaseLayout>
+  <main class="grow h-full p-4">
+    <Hero />
+    <nav class="flex items-center justify-around text-xl sm:text-4xl py-6">
+      <a href="/blog">Blog</a>
+      <a href="/projects">Projects</a>
+      <a href="/about">About</a>
+    </nav>
+  </main>
+</BaseLayout>
+
+<style>
+  nav > a {
+    position: relative;
+    z-index: 100;
+    padding: 0 1rem;
+    transition: color 0.5s;
+    outline: none;
+  }
+
+  nav > a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 100%;
+    height: 100%;
+    background-color: hsl(var(--foreground));
+    z-index: -1;
+  }
+
+  nav > a:hover,
+  nav > a:focus {
+    color: hsl(var(--background));
+  }
+
+  nav > a:hover::before,
+  nav > a:focus::before {
+    animation: reveal 0.35s forwards;
+  }
+
+  @keyframes reveal {
+    0% {
+      right: 100%;
+    }
+    100% {
+      right: 0;
+    }
+  }
+</style>

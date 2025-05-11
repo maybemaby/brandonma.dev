@@ -1,6 +1,6 @@
 ---
-import Article from "$lib/components/Article.astro";
-import Main from "$lib/layout/main.astro";
+import Article from "$lib/components/BlogPreview.astro";
+import Main from "$lib/layout/main-revamp.astro";
 import { getCollection } from "astro:content";
 
 const blogPosts = await getCollection("blog", (post) => {
@@ -16,7 +16,7 @@ const blogPosts = await getCollection("blog", (post) => {
   title="Blog - Brandon Ma"
   description={"Blog posts about programming and tech like Go, Typescript, and Svelte."}
 >
-  <h1 class="text-4xl mb-8 mt-3">Blog</h1>
+  <h1 class="text-4xl mb-8 mt-3 text-foreground">Blog</h1>
   <section id="articles" class="flex flex-col gap-6">
     {
       blogPosts.map((post) => (

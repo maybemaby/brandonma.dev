@@ -1,55 +1,156 @@
 ---
-import Hero from "$lib/components/Hero.astro";
-import BaseLayout from "$lib/layout/base.astro";
+import BlogPreview from "$lib/components/BlogPreview.astro";
+import Landing from "$lib/layout/landing.astro";
+import LucideArrowRight from "~icons/lucide/arrow-right";
+import MdiGithub from "~icons/mdi/github";
+import MdiLinkedin from "~icons/mdi/linkedin";
 ---
 
-<BaseLayout>
-  <main class="grow h-full p-4">
-    <Hero />
-    <nav class="flex items-center justify-around text-xl sm:text-4xl py-6">
-      <a href="/blog">Blog</a>
-      <a href="/projects">Projects</a>
-      <a href="/about">About</a>
-    </nav>
-  </main>
-</BaseLayout>
+<Landing>
+  <div class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-4">
+    <div
+      class="md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
+    >
+      <div class="bg-background w-fit p-1 overflow-clip">
+        <p class="text-4xl md:text-6xl">0000002 REV. MA</p>
+        <p class="opacity-0 text-xl md:text-2xl">MANUFACTURING ENGINEER</p>
+      </div>
+    </div>
+    <a
+      href="/about"
+      class="group/about md:col-span-2 bg-foreground md:h-[400px] p-8"
+    >
+      <div class="text-3xl text-background inline-flex items-center gap-2">
+        ABOUT <LucideArrowRight
+          class="group-hover/about:-rotate-45 group-focus-within/about:-rotate-45 group-active:-rotate-45 transition-transform duration-150"
+        />
+      </div></a
+    >
+  </div>
+  <div
+    class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-8 md:gap-4 mt-10"
+  >
+    <div
+      class="md:col-start-1 md:col-span-2 relative min-h-[320px] max-h-[500px]"
+    >
+      <svg
+        class="absolute -top-4 -left-4 w-[40px] h-[40px]"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="corner text-accent"
+          d="M 0 100 V 0 H 100"
+          stroke-width="8"
+          stroke="currentColor"
+          fill="none"
+        >
+        </path>
+      </svg>
+
+      <svg
+        class="absolute -bottom-4 -right-0 w-[50px] h-[50px] rotate-180"
+        viewBox="0 0 100 100"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="corner text-accent"
+          d="M 0 100 V 0 H 100"
+          stroke-width="8"
+          stroke="currentColor"
+          fill="none"
+        >
+        </path>
+      </svg>
+      <h2 class="text-accent text-3xl mb-8">BLOG</h2>
+      <div class="flex flex-col gap-4 mb-6">
+        <BlogPreview
+          title="Getting Started With PostGIS using Go"
+          publishedAt={new Date()}
+          previewText=""
+          slug="go-with-postgis"
+        />
+        <BlogPreview
+          title="Getting Started With PostGIS using Go"
+          publishedAt={new Date()}
+          previewText=""
+          slug="go-with-postgis"
+        />
+        <BlogPreview
+          title="Getting Started With PostGIS using Go"
+          publishedAt={new Date()}
+          previewText=""
+          slug="go-with-postgis"
+        />
+      </div>
+      <a href="/blog">See More</a>
+    </div>
+    <div class="md:col-span-3 bg-accent p-8">
+      <p class="text-background text-3xl">PLACEHOLDER</p>
+    </div>
+  </div>
+  <div
+    class="w-full flex items-center justify-center mt-12 text-3xl gap-8 text-accent"
+  >
+    <a
+      href="https://github.com"
+      class="w-fit"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p class="sr-only">Github Profile</p>
+      <MdiGithub />
+    </a>
+    <a
+      href="https://www.linkedin.com/in/brandon-y-ma"
+      class="w-fit"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <p class="sr-only">LinkedIn Profile</p>
+      <MdiLinkedin />
+    </a>
+  </div>
+</Landing>
+
+<script>
+  import { utils, animate, stagger, createTimeline, svg } from "animejs";
+  const nameplateParts = utils.$(".nameplate p");
+
+  const tl = createTimeline();
+
+  tl.label("start")
+    .add(nameplateParts[0], { translateY: [-200, 0], ease: "outExpo" }, "start")
+    .add(
+      nameplateParts[1],
+      {
+        translateY: [100, 0],
+        opacity: [0, 1],
+        easing: "outExpo",
+      },
+      "start"
+    );
+
+  animate(svg.createDrawable(".corner"), {
+    draw: ["0 0", "0 1"],
+    ease: "inOutQuad",
+  });
+</script>
 
 <style>
-  nav > a {
-    position: relative;
-    z-index: 100;
-    padding: 0 1rem;
-    transition: color 0.5s;
-    outline: none;
-  }
-
-  nav > a::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 100%;
-    height: 100%;
-    background-color: hsl(var(--foreground));
-    z-index: -1;
-  }
-
-  nav > a:hover,
-  nav > a:focus {
-    color: hsl(var(--background));
-  }
-
-  nav > a:hover::before,
-  nav > a:focus::before {
-    animation: reveal 0.35s forwards;
-  }
-
-  @keyframes reveal {
-    0% {
-      right: 100%;
-    }
-    100% {
-      right: 0;
-    }
+  .bg-grid {
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 19px,
+        #e55a347a 20px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 19px,
+        #e55a3478 20px
+      );
+    background-size: 20px 20px;
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import Main from "$lib/layout/main-revamp.astro";
+import Main from "$lib/layout/main.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import "$lib/styles/blog.css";
@@ -30,7 +30,7 @@ const { Content, headings } = await post.render();
 ---
 
 <Main title={`${post.data.title}`} description={metaDescription}>
-  <div class="mt-8 pb-8 blog-content">
+  <div class="pb-8 blog-content">
     <Content />
   </div>
 </Main>
