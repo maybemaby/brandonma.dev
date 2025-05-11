@@ -20,7 +20,7 @@ const latestPosts = blogPosts.slice(0, 3);
 <Landing>
   <div class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-4">
     <div
-      class="md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
+      class="relative md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
     >
       <div class="bg-background w-fit p-1 overflow-clip">
         <p class="font-semibold text-3xl sm:text-4xl lg:text-5xl">
@@ -29,6 +29,13 @@ const latestPosts = blogPosts.slice(0, 3);
         <p class="opacity-0 text-xl font-semibold sm:text-xl lg:text-2xl">
           MANUFACTURING ENGINEER
         </p>
+      </div>
+      <div
+        class="w-60 hidden xsm:flex justify-end absolute -bottom-5 -right-2 md:bottom-0 md:right-0 rotate-45 corner-job"
+      >
+        <div class="bg-background">
+          <p class="font-light">(Sometimes Web Dev)</p>
+        </div>
       </div>
     </div>
     <a
@@ -44,6 +51,7 @@ const latestPosts = blogPosts.slice(0, 3);
       </div></a
     >
   </div>
+  <!-- Bottom section -->
   <div
     class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-8 md:gap-4 mt-10"
   >
@@ -98,6 +106,7 @@ const latestPosts = blogPosts.slice(0, 3);
       <p class="text-background font-medium text-2xl">PLACEHOLDER</p>
     </div>
   </div>
+  <!-- Social links -->
   <div
     class="w-full flex items-center justify-center mt-12 text-3xl gap-8 text-accent"
   >
@@ -138,6 +147,14 @@ const latestPosts = blogPosts.slice(0, 3);
         easing: "outExpo",
       },
       "start"
+    )
+    .add(
+      ".corner-job",
+      {
+        rotate: ["-65deg"],
+        ease: "inOutSine",
+      },
+      "+=100"
     );
 
   animate(svg.createDrawable(".corner"), {
@@ -161,5 +178,9 @@ const latestPosts = blogPosts.slice(0, 3);
         #e55a3478 20px
       );
     background-size: 20px 20px;
+  }
+
+  .corner-job {
+    transform-origin: top left;
   }
 </style>
