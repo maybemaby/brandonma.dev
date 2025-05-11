@@ -20,6 +20,9 @@ importers:
       '@astrojs/svelte':
         specifier: ^7.0.13
         version: 7.0.13(astro@5.7.12(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.5.0))(jiti@2.4.2)(lightningcss@1.29.2)(svelte@5.28.2)(typescript@5.8.3)(yaml@2.5.0)
+      '@fontsource-variable/manrope':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@fontsource/geist-sans':
         specifier: ^5.2.5
         version: 5.2.5
@@ -29,12 +32,18 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.6
         version: 4.1.6(vite@6.3.5(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.5.0))
+      animejs:
+        specifier: ^4.0.2
+        version: 4.0.2
       astro:
         specifier: ^5.7.12
         version: 5.7.12(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.3)(yaml@2.5.0)
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
       svelte:
         specifier: ^5.28.2
         version: 5.28.2
@@ -60,6 +69,9 @@ importers:
       '@iconify-json/lucide':
         specifier: ^1.2.41
         version: 1.2.41
+      '@iconify-json/mdi':
+        specifier: ^1.2.3
+        version: 1.2.3
       unplugin-icons:
         specifier: ^22.1.0
         version: 22.1.0(svelte@5.28.2)
@@ -537,6 +549,9 @@ packages:
     resolution: {integrity: sha512-vBZP4NlzfOlerQTnba4aqZoMhE/a9HY7HRqoOPaETQcSQuWEIyZMHGfVu6w9wGtGK5fED5qRs2DteVCjOH60sA==}
     engines: {node: '>=14'}
 
+  '@fontsource-variable/manrope@5.2.5':
+    resolution: {integrity: sha512-6Mo3ldtgAhxvSSyy+bLbFRjkiYhVo6RLcasJfj9Du5k2nX16/RwjQdBbZJfvsofVt6GqQ+O6AVkazmS3Xw5R9A==}
+
   '@fontsource/geist-sans@5.2.5':
     resolution: {integrity: sha512-anllOHyJbElRs9fV15TeDRqAeb1IKm4bSknPl6ZMoyPTx1BBy7logudcUwpNjmQLkzn4Q0JGQLRCUKJYoyST6A==}
 
@@ -551,6 +566,9 @@ packages:
 
   '@iconify-json/lucide@1.2.41':
     resolution: {integrity: sha512-rOOahfHMgWPqLyRLvLSqEwCmS4jEDxB1Pk63QTe0GObLBKgYKlPmuc1zKYzSuPPkLX/ND7rScVOIDb//ggMNzg==}
+
+  '@iconify-json/mdi@1.2.3':
+    resolution: {integrity: sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1025,6 +1043,9 @@ packages:
   ajv@8.17.1:
     resolution: {integrity: sha512-B/gBuNg5SiMTrPkC+A2+cW0RszwxYmn6VYxB/inlBStS5nx6xHIt/ehKRhIMhqusl7a8LjQoZnjCs5vhwxOQ1g==}
 
+  animejs@4.0.2:
+    resolution: {integrity: sha512-f0L/kSya2RF23iMSF/VO01pMmLwlAFoiQeNAvBXhEyLzIPd2/QTBRatwGUqkVCC6seaAJYzAkGir55N4SL+h3A==}
+
   ansi-align@3.0.1:
     resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
 
@@ -1205,6 +1226,9 @@ packages:
 
   data-uri-to-buffer@2.0.2:
     resolution: {integrity: sha512-ND9qDTLc6diwj+Xe5cdAgVTbLVdXbtxTJRXRhli8Mowuaan+0EJOtdqJ0QCHNSSPyoXGx9HX2/VMnKeC34AChA==}
+
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
   debug@4.4.0:
     resolution: {integrity: sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==}
@@ -3001,6 +3025,8 @@ snapshots:
 
   '@fastify/busboy@2.1.1': {}
 
+  '@fontsource-variable/manrope@5.2.5': {}
+
   '@fontsource/geist-sans@5.2.5': {}
 
   '@fontsource/gothic-a1@5.2.5': {}
@@ -3014,6 +3040,10 @@ snapshots:
       '@iconify/types': 2.0.0
 
   '@iconify-json/lucide@1.2.41':
+    dependencies:
+      '@iconify/types': 2.0.0
+
+  '@iconify-json/mdi@1.2.3':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -3448,6 +3478,8 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
+  animejs@4.0.2: {}
+
   ansi-align@3.0.1:
     dependencies:
       string-width: 4.2.3
@@ -3695,6 +3727,8 @@ snapshots:
   cssesc@3.0.0: {}
 
   data-uri-to-buffer@2.0.2: {}
+
+  dayjs@1.11.13: {}
 
   debug@4.4.0:
     dependencies:

@@ -1,0 +1,21 @@
+---
+import dayjs from "dayjs";
+
+interface Props {
+  title: string;
+  publishedAt: Date;
+  previewText: string;
+  slug: string;
+}
+
+const { title, publishedAt, previewText, slug } = Astro.props;
+
+const displayDate = dayjs(publishedAt).format("MMMM DD, YYYY");
+---
+
+<a href={`/blog/${slug}`}>
+  <article class="text-accent">
+    <h3 class="text-lg max-w-[56ch] line-clamp-2">{title}</h3>
+    <p class="font-light">{displayDate}</p>
+  </article>
+</a>

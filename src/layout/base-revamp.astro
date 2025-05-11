@@ -1,0 +1,33 @@
+---
+import "$lib/styles/app-revamp.css";
+import "@fontsource-variable/manrope";
+import "@fontsource/gothic-a1/400.css";
+import "@fontsource/gothic-a1/600.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+  fitScreen?: boolean;
+}
+
+const { title, description, fitScreen } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content={description ??
+        "Brandon Ma is a manufacturing engineer and web developer."}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title ?? "Brandon Ma"}</title>
+  </head>
+  <body class:list={{ "h-[100svh]": fitScreen }}>
+    <slot />
+  </body>
+</html>

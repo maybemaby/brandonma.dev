@@ -1,0 +1,42 @@
+---
+import Main from "$lib/layout/main-revamp.astro";
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import "$lib/styles/blog.css";
+
+export const getStaticPaths = (async () => {
+  // Filter out drafts in production
+  const collection = await getCollection("blog", (post) => {
+    if (!import.meta.env.PROD) {
+      return true;
+    }
+
+    return post.data.draft !== true;
+  });
+
+  return collection.map((post) => ({
+    params: { slug: post.slug },
+    props: {
+      slug: post.slug,
+      post,
+      metaDescription: post.data.metaDescription,
+    },
+  }));
+}) satisfies GetStaticPaths;
+
+const { slug, post, metaDescription } = Astro.props;
+
+const { Content, headings } = await post.render();
+---
+
+<Main title={`${post.data.title}`} description={metaDescription}>
+  <div class="mt-8 pb-8 blog-content">
+    <Content />
+  </div>
+</Main>
+
+<style>
+  h1 {
+    font-size: 2.5rem;
+  }
+</style>

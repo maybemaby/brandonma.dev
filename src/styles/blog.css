@@ -3,7 +3,7 @@
 
 
 .blog-content h1 {
-  @apply text-2xl font-bold mb-10 text-blue-600;
+  @apply text-2xl font-bold mb-10 text-foreground;
 }
 
 .blog-content h2 {
@@ -19,15 +19,12 @@
 }
 
 .blog-content a {
-  @apply text-blue-400 underline;
+  @apply text-foreground underline;
 }
 
-.blog-content a:visited {
-  @apply text-blue-500;
-}
 
 blockquote {
-  @apply border-l-4 border-blue-400 pl-4 my-4 bg-card rounded-r-md max-w-[70ch];
+  @apply border-l-4 border-foreground pl-4 my-4 bg-card rounded-r-md max-w-[70ch];
 }
 
 strong {

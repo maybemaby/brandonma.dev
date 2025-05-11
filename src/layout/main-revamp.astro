@@ -1,0 +1,24 @@
+---
+import type { ComponentProps } from "astro/types";
+import Base from "./base-revamp.astro";
+
+type Props = ComponentProps<typeof Base>;
+const { title, description } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <div class="h-full">
+    <header
+      class="p-2 pt-6 max-w-(--breakpoint-lg) w-full mx-auto flex items-center justify-between gap-2"
+    >
+      <a class="text-xl font-semibold" href="/revamp">Home</a>
+      <nav class="flex items-end gap-4 text-lg">
+        <a href="/blog">Blog</a>
+        <a href="/about">About</a>
+      </nav>
+    </header>
+    <main class="p-2 max-w-(--breakpoint-lg) w-full mx-auto text-accent">
+      <slot />
+    </main>
+  </div>
+</Base>
