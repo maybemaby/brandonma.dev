@@ -26,6 +26,16 @@ const { title, description, fitScreen } = Astro.props;
     />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <title>{title ?? "Brandon Ma"}</title>
+    <meta property="og:title" content="Portfolio - Brandon Ma" />
+    <meta
+      property="og:description"
+      content={description ??
+        "Brandon Ma is a manufacturing engineer and web developer."}
+    />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={"https://brandonma.dev"} />
+    <meta property="og:image" content="https://brandonma.dev/OG.png" />
   </head>
   <body class:list={{ "h-[100svh]": fitScreen }}>
     <slot />

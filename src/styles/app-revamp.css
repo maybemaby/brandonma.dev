@@ -101,7 +101,7 @@
     --radius: 0.5rem;
   }
 
-  html.dark {
+  /* html.dark {
     --background: 27 100% 98%;
     --foreground: 13 77% 55%;
     --accent: 208 18% 21%;
@@ -131,10 +131,10 @@
     --destructive-foreground: 210 20% 98%;
 
     --ring: 216 12.2% 83.9%;
-  }
+  } */
 
   @media (prefers-color-scheme: dark) {
-    :root {
+    /* :root {
       --background: 27 100% 98%;
       --foreground: 13 77% 55%;
       --accent: 208 18% 21%;
@@ -164,7 +164,7 @@
       --destructive-foreground: 210 20% 98%;
 
       --ring: 216 12.2% 83.9%;
-    }
+    } */
 
     .astro-code,
     .astro-code span {

@@ -22,7 +22,7 @@ const latestPosts = blogPosts.slice(0, 3);
     <div
       class="relative md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
     >
-      <div class="bg-background w-fit p-1 overflow-clip">
+      <div class="bg-background w-[35ch] md:w-[50ch] p-1 overflow-clip">
         <p class="font-semibold text-3xl sm:text-4xl lg:text-5xl">
           0000002 REV. MA
         </p>
@@ -102,8 +102,13 @@ const latestPosts = blogPosts.slice(0, 3);
       </div>
       <a href="/blog">See More</a>
     </div>
-    <div class="md:col-span-3 bg-accent p-8">
-      <p class="text-background font-medium text-2xl">PLACEHOLDER</p>
+    <div class="md:col-span-3 bg-accent p-8 flex flex-col justify-between">
+      <p class="text-background font-medium text-2xl">WORK</p>
+      <div class="self-end text-background">
+        <p class="font-medium">CURRENT :</p>
+        <p class="font-medium">KLA</p>
+        <p class="font-medium">SAN JOSE, CALIFORNIA</p>
+      </div>
     </div>
   </div>
   <!-- Social links -->
@@ -132,7 +137,14 @@ const latestPosts = blogPosts.slice(0, 3);
 </Landing>
 
 <script>
-  import { utils, animate, stagger, createTimeline, svg } from "animejs";
+  import {
+    utils,
+    animate,
+    stagger,
+    createTimeline,
+    svg,
+    createTimer,
+  } from "animejs";
   const nameplateParts = utils.$(".nameplate p");
 
   const tl = createTimeline();
@@ -148,13 +160,33 @@ const latestPosts = blogPosts.slice(0, 3);
       },
       "start"
     )
+    .label("title")
     .add(
       ".corner-job",
       {
-        rotate: ["-65deg"],
-        ease: "inOutSine",
+        rotate: [
+          {
+            to: "-65deg",
+          },
+        ],
+
+        ease: "inOutCirc",
       },
       "+=100"
+    )
+    .add(
+      nameplateParts[0],
+      {
+        translateX: [0, -500, 0],
+        onUpdate(self) {
+          if (self.progress > 0.5) {
+            nameplateParts[0].innerHTML = "BRANDON MA";
+          }
+        },
+        ease: "inOutExpo",
+        duration: 2000,
+      },
+      "title+=1000"
     );
 
   animate(svg.createDrawable(".corner"), {
