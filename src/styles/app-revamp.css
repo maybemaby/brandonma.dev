@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @config '../../tailwind.config.mjs';
 
@@ -11,7 +11,6 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
   *,
   ::after,
   ::before,
@@ -21,12 +20,17 @@
   }
 }
 
+@theme {
+  --breakpoint-xsm: 480px;
+}
+
 @layer base {
   :root {
     --white: 220 14.3% 95.9%;
     --test: hsl(180, 14%, 96%);
-    --background: 220 14.3% 95.9%;
-    --foreground: 224 71.4% 4.1%;
+    --background: 27 100% 98%;
+    --foreground: 13 77% 55%;
+    --accent: 208 18% 21%;
 
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
@@ -46,7 +50,7 @@
     --secondary: 220 14.3% 95.9%;
     --secondary-foreground: 220.9 39.3% 11%;
 
-    --accent: 220 14.3% 95.9%;
+    /* --accent: 220 14.3% 95.9%; */
     --accent-foreground: 220.9 39.3% 11%;
 
     --destructive: 0 72.2% 50.6%;
@@ -56,16 +60,17 @@
 
     --radius: 0.5rem;
 
-    --font-reading: system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
+    --font-sans: "Manrope Variable", system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+      "Open Sans", "Helvetica Neue", sans-serif;
   }
 
   html.light {
     --white: 220 14.3% 95.9%;
     --test: hsl(180, 14%, 96%);
-    --background: 220 14.3% 95.9%;
-    --foreground: 224 71.4% 4.1%;
+    --background: 27 100% 98%;
+    --foreground: 13 77% 55%;
+    --accent: 208 18% 21%;
 
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
@@ -96,9 +101,10 @@
     --radius: 0.5rem;
   }
 
-  html.dark {
-    --background: 224 10% 12%;
-    --foreground: 210 20% 98%;
+  /* html.dark {
+    --background: 27 100% 98%;
+    --foreground: 13 77% 55%;
+    --accent: 208 18% 21%;
 
     --muted: 215 27.9% 16.9%;
     --muted-foreground: 217.9 10.6% 64.9%;
@@ -125,12 +131,13 @@
     --destructive-foreground: 210 20% 98%;
 
     --ring: 216 12.2% 83.9%;
-  }
+  } */
 
   @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 224 10% 12%;
-      --foreground: 210 20% 98%;
+    /* :root {
+      --background: 27 100% 98%;
+      --foreground: 13 77% 55%;
+      --accent: 208 18% 21%;
 
       --muted: 215 27.9% 16.9%;
       --muted-foreground: 217.9 10.6% 64.9%;
@@ -157,6 +164,16 @@
       --destructive-foreground: 210 20% 98%;
 
       --ring: 216 12.2% 83.9%;
+    } */
+
+    .astro-code,
+    .astro-code span {
+      color: var(--shiki-dark) !important;
+      background-color: var(--shiki-dark-bg) !important;
+      /* Optional, if you also want font styles */
+      font-style: var(--shiki-dark-font-style) !important;
+      font-weight: var(--shiki-dark-font-weight) !important;
+      text-decoration: var(--shiki-dark-text-decoration) !important;
     }
   }
 }
@@ -164,19 +181,16 @@
 @layer base {
   * {
     box-sizing: border-box;
-    @apply border-border;
+    @apply border-border font-normal;
   }
 
   html {
     height: 100svh;
-    font-family: "Geist Sans", system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-      "Helvetica Neue", sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
   }
 
   body {
-    height: 100%;
     @apply bg-background text-foreground;
   }
 

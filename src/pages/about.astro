@@ -1,0 +1,89 @@
+---
+export const prerender = false;
+import Main from "$lib/layout/main-revamp.astro";
+import { actions } from "astro:actions";
+
+const result = Astro.getActionResult(actions.contact);
+---
+
+<Main
+  title="About - Brandon Ma"
+  description="Profile for Brandon Ma, Manufacturing Engineer and developer."
+>
+  <section id="about" class="font-reading">
+    <h1 class="text-2xl mb-8 mt-3 text-foreground font-sans font-medium">
+      About Me
+    </h1>
+
+    <p class="leading-relaxed">
+      During the day, I work primarily with hardware and manufacturing.
+      Currently, I work in the semiconductor equipment space. I'm an engineer
+      and a problem solver at heart. In my free time, I discovered programming
+      and it's stuck with me since.
+    </p>
+
+    <p class="leading-relaxed">
+      On this site, I write about tech and software development. As a hobbyist I
+      like trying a lot of languages and frameworks, but right now I use the
+      most:
+      <br />
+      Typescript, React, Next.js, Svelte, Go, Python.
+    </p>
+
+    <p class="leading-relaxed">
+      Outside of work and programming, I enjoy reading, cooking, hitting the
+      gym, hiking, tennis, and gaming.
+    </p>
+
+    <p class="leading-relaxed">
+      Get in contact with me if you want to chat or need help with a project.
+    </p>
+  </section>
+  <div class="mt-10 max-w-[80ch]">
+    <p class="text-xl">Contact Me</p>
+    <form action={actions.contact} method="post">
+      <label for="email" class="block mt-2">Email</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="w-full border border-gray-300 rounded-md p-1 text-black"
+        placeholder="Let me know where I can get back to you"
+        required
+      />
+      <label for="message" class="block mt-2">Message</label>
+      <textarea
+        id="message"
+        name="message"
+        class="w-full border border-gray-300 rounded-md p-1 text-black"
+        required></textarea>
+      <button class="mt-3 py-1 px-4 rounded-md bg-foreground text-background"
+        >Send</button
+      >
+      {result?.error && <p class="text-red-500 mt-2">{result.error.message}</p>}
+      {
+        result?.data?.success && (
+          <p class="text-green-500 mt-2">Thanks! I'll get back to you.</p>
+        )
+      }
+    </form>
+  </div>
+</Main>
+
+<style>
+  #about p {
+    max-width: 58ch;
+    margin: 1rem 0;
+    font-size: 1.05rem;
+  }
+
+  .topic {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 0;
+    z-index: -1;
+  }
+</style>

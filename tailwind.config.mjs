@@ -10,6 +10,7 @@ const config = {
       center: true,
       padding: "2rem",
       screens: {
+        xs: "480px",
         "2xl": "1400px",
       },
     },
@@ -55,7 +56,8 @@ const config = {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: [...fontFamily.sans],
+        sans: ["var(--font-sans)", ...fontFamily.sans],
+        reading: [...fontFamily.sans],
       },
     },
   },
