@@ -2,6 +2,7 @@
 import BlogPreview from "$lib/components/BlogPreview.astro";
 import Landing from "$lib/layout/landing.astro";
 import LucideArrowRight from "~icons/lucide/arrow-right";
+import LucideRss from "~icons/lucide/rss";
 import MdiGithub from "~icons/mdi/github";
 import MdiLinkedin from "~icons/mdi/linkedin";
 import { getCollection } from "astro:content";
@@ -140,18 +141,15 @@ const latestPosts = blogPosts
       <p class="sr-only">LinkedIn Profile</p>
       <MdiLinkedin />
     </a>
+    <a href="/rss.xml" class="w-fit">
+      <p class="sr-only">RSS Feed</p>
+      <LucideRss class={"w-6 h-6"} />
+    </a>
   </div>
 </Landing>
 
 <script>
-  import {
-    utils,
-    animate,
-    stagger,
-    createTimeline,
-    svg,
-    createTimer,
-  } from "animejs";
+  import { utils, animate, createTimeline, svg } from "animejs";
   const nameplateParts = utils.$(".nameplate p");
 
   const tl = createTimeline();

@@ -24,9 +24,9 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 
-const { slug, post, metaDescription } = Astro.props;
+const { post, metaDescription } = Astro.props;
 
-const { Content, headings } = await post.render();
+const { Content } = await post.render();
 ---
 
 <Main title={`${post.data.title}`} description={metaDescription}>
