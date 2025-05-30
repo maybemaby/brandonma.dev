@@ -7,6 +7,10 @@ metaDescription: Learn how to setup Go with PostGIS using pgx and go-geom.
 
 # Getting Started with PostGIS using Go
 
+<div class="published">
+Published November 7, 2024
+</div>
+
 ## Table of Contents
 - [Getting Started with PostGIS using Go](#getting-started-with-postgis-using-go)
 	- [Table of Contents](#table-of-contents)

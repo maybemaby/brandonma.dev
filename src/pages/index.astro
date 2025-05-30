@@ -14,7 +14,14 @@ const blogPosts = await getCollection("blog", (post) => {
   return post.data.draft !== true;
 });
 
-const latestPosts = blogPosts.slice(0, 3);
+const latestPosts = blogPosts
+  .sort((a, b) => {
+    return (
+      new Date(b.data.publishedAt).getTime() -
+      new Date(a.data.publishedAt).getTime()
+    );
+  })
+  .slice(0, 3);
 ---
 
 <Landing>

@@ -10,6 +10,13 @@ const blogPosts = await getCollection("blog", (post) => {
 
   return post.data.draft !== true;
 });
+
+blogPosts.sort((a, b) => {
+  return (
+    new Date(b.data.publishedAt).getTime() -
+    new Date(a.data.publishedAt).getTime()
+  );
+});
 ---
 
 <Main

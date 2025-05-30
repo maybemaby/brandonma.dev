@@ -10,7 +10,8 @@ interface Props {
 
 const { title, publishedAt, previewText, slug } = Astro.props;
 
-const displayDate = dayjs(publishedAt).format("MMMM DD, YYYY");
+// Convert from UTC to PDT
+const displayDate = dayjs(publishedAt).add(7, "hours").format("MMMM DD, YYYY");
 ---
 
 <a href={`/blog/${slug}`}>
