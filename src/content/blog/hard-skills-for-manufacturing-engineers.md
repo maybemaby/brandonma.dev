@@ -35,14 +35,6 @@ Still, technical skills give you that extra edge over other applicants and can f
 
 *Disclaimer: Even within the Manufacturing Engineer title, job duties can differ a lot between companies. My experience is working in a semiconductor equipment company that does high value, low volume specialty equipment. I also work on a mechanical focused team.*
 
-<!-- ## Travelers
-
-Travelers are a set of steps written out for technicians to follow in order to complete a procedure. This may be for assembling a part, performing qualification tests, or any other process that your company needs to make its products. The steps may involve recording data points or be simple text instructions, but they will commonly record the time of completion and the person who completed the step.
-
-Creating and maintaining these will likely be one of your main responsibilities. The primary purpose of travelers is to certify all necessary steps have been taken.
-
-There's not much to practice or prepare for here since every company will have it's own methods. Some have dedicated software, but I have also seen some companies still use paper travelers. I would be impressed by a candidate if they can speak to important aspects of a traveler and can write clear, concise instructions. -->
-
 ## General Handiness
 
 Being able to get your hands dirty and get involved directly is a great skill to have as a manufacturing engineer. One of the main aspects of the job is resolving escalations to make sure the factory keeps running. You never know when you might get asked to remove a seized screw, troubleshoot on the floor, or perform an unorthodox repair. One of the biggest benefits is it can buy a lot of goodwill and belief from your technicians.
