@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.5.4",
+    "@astrojs/cloudflare": "^12.6.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.4.1",
     "@astrojs/svelte": "^7.1.0",
@@ -21,7 +21,7 @@
     "@fontsource/gothic-a1": "^5.2.5",
     "@tailwindcss/vite": "^4.1.6",
     "animejs": "^4.0.2",
-    "astro": "^5.9.1",
+    "astro": "^5.11.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
     "svelte": "^5.28.2",
