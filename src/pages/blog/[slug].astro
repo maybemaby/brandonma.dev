@@ -3,6 +3,7 @@ import Main from "$lib/layout/main-revamp.astro";
 import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import "$lib/styles/blog.css";
+import { render } from "astro:content";
 
 export const getStaticPaths = (async () => {
   // Filter out drafts in production
@@ -15,9 +16,9 @@ export const getStaticPaths = (async () => {
   });
 
   return collection.map((post) => ({
-    params: { slug: post.slug },
+    params: { slug: post.id },
     props: {
-      slug: post.slug,
+      slug: post.id,
       post,
       metaDescription: post.data.metaDescription,
     },
@@ -26,7 +27,7 @@ export const getStaticPaths = (async () => {
 
 const { post, metaDescription } = Astro.props;
 
-const { Content } = await post.render();
+const { Content } = await render(post);
 ---
 
 <Main title={`${post.data.title}`} description={metaDescription}>

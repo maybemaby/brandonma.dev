@@ -58,6 +58,10 @@ strong {
   @apply max-w-[62ch] font-reading;
 }
 
+.blog-content p>code {
+  @apply bg-secondary text-foreground px-1 py-0.5 rounded-md;
+}
+
 .published {
   @apply mb-10;
 }

@@ -8,11 +8,13 @@ import cloudflare from "@astrojs/cloudflare";
 
 import tailwindcss from "@tailwindcss/vite";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://brandonma.dev",
 
-  integrations: [svelte(), sitemap({})],
+  integrations: [svelte(), sitemap({}), mdx()],
 
   vite: {
     plugins: [

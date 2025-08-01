@@ -28,7 +28,7 @@ blogPosts.sort((a, b) => {
     {
       blogPosts.map((post) => (
         <Article
-          slug={post.slug}
+          slug={post.id}
           title={post.data.title}
           publishedAt={post.data.publishedAt}
           previewText={post.data.previewText}
