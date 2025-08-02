@@ -28,9 +28,9 @@
 
 <div>
   <div class="flex items-center gap-3 mb-4">
-    <button onclick={() => (todoLength += 1)}>Add Todo</button>
-    <button onclick={() => (todoLength -= 1)}> Remove Todo </button>
-    <button onclick={() => (todoLength = 0)}> Clear Todos </button>
+    <button class="p-2" onclick={() => (todoLength += 1)}>Add Todo</button>
+    <button class="p-2" onclick={() => (todoLength -= 1)}> Remove Todo </button>
+    <button class="p-2" onclick={() => (todoLength = 0)}> Clear Todos </button>
   </div>
   <ul class="h-[200px]">
     {#each { length: todoLength } as _, idx}

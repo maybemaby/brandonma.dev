@@ -173,15 +173,14 @@ You could also use it to animate all children of a component when it mounts.
   import { type Attachment } from "svelte/attachments";
   import { animate, stagger } from "animejs";
 
-  let show = $state(true);
-
   const animeAttachment: Attachment = (el) => {
     animate(el.children, {
       y: [100, 0],
-      x: stagger(150, { start: -350 }),
+      x: stagger(80, { start: -250 }),
+      rotate: stagger(10, { start: -20 }),
       opacity: [0, 1],
       scale: [0.5, 1],
-      duration: 1000,
+      duration: 800,
       delay: stagger(500),
       loop: true,
       loopDelay: 1000,
@@ -189,15 +188,13 @@ You could also use it to animate all children of a component when it mounts.
   };
 </script>
 
-{#if show}
-  <div class="relative" {@attach animeAttachment}>
-    {#each { length: 5 } as _, idx}
-      <div class="bg-white p-3 rounded-md w-[100px] h-[80px] absolute">
-        Card {idx}
-      </div>
-    {/each}
-  </div>
-{/if}
+<div class="relative" {@attach animeAttachment}>
+  {#each { length: 5 } as _, idx}
+    <div class="bg-white p-3 rounded-md w-[80px] h-[100px] absolute border">
+      Card {idx}
+    </div>
+  {/each}
+</div>
 ```
 
 <Showcase>
@@ -243,9 +240,9 @@ Anime.js animations have a `seek` method which accepts a time to move the animat
 
 <div>
   <div class="flex items-center gap-3 mb-4">
-    <button onclick={() => (todoLength += 1)}>Add Todo</button>
-    <button onclick={() => (todoLength -= 1)}> Remove Todo </button>
-    <button onclick={() => (todoLength = 0)}> Clear Todos </button>
+    <button class="p-2" onclick={() => (todoLength += 1)}>Add Todo</button>
+    <button class="p-2" onclick={() => (todoLength -= 1)}> Remove Todo </button>
+    <button class="p-2" onclick={() => (todoLength = 0)}> Clear Todos </button>
   </div>
   <ul class="h-[200px]">
     {#each { length: todoLength } as _, idx}
@@ -255,7 +252,6 @@ Anime.js animations have a `seek` method which accepts a time to move the animat
     {/each}
   </ul>
 </div>
-
 ```
 
 
@@ -264,6 +260,6 @@ Anime.js animations have a `seek` method which accepts a time to move the animat
 </Showcase>
 
 I feel like Anime.js and Svelte mesh quite well. Feels magical and easy to create nice animations tied in with Svelte primitives.
-There's more that can be done that I haven't explored yet, you can probably compose with Anime.js timelines in powerful ways.
+There's more that can be done that I haven't explored yet, like you can probably compose with Anime.js timelines in powerful ways.
 
 Check out the <a href="https://animejs.com/documentation/" target="_blank">Anime.js documentation</a> and try it out yourself!
