@@ -4,6 +4,7 @@ import type { GetStaticPaths } from "astro";
 import { getCollection } from "astro:content";
 import "$lib/styles/blog.css";
 import { render } from "astro:content";
+import Toc from "$lib/components/Toc.astro";
 
 export const getStaticPaths = (async () => {
   // Filter out drafts in production
@@ -27,11 +28,17 @@ export const getStaticPaths = (async () => {
 
 const { post, metaDescription } = Astro.props;
 
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+
+// We want the date as it's written from the markdown
+const dateString = `${post.data.publishedAt.getUTCDate()} ${post.data.publishedAt.toLocaleString("default", { month: "long" })} ${post.data.publishedAt.getUTCFullYear()}`;
 ---
 
 <Main title={`${post.data.title}`} description={metaDescription}>
   <div class="mt-8 pb-8 blog-content">
+    <h1>{post.data.title}</h1>
+    <p>Published {dateString}</p>
+    <Toc headings={headings} />
     <Content />
   </div>
 </Main>

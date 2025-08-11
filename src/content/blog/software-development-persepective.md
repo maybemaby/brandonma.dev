@@ -6,15 +6,6 @@ metaDescription: Manufacturing engineer reflects on software development.
 draft: true
 ---
 
-# Thoughts on Software Development from a Manufacturing Engineer
-
-## Table of Contents
-- [Open Source](#open-source)
-- [AI](#ai)
-- [Debugging](#debugging)
-- [Testing](#testing)
-- [Documentation](#documentation)
-
 ## My Background
 
 I've enjoyed writing bits of mostly personal software for several years now. My day job has very little to do with software, I work as a Manufacturing Engineer on a mechanical focused team. I squeeze in Python for data analysis tasks when I can, but that's about it. I started learning Python around 2020 as a way to add to my resume during a time when most companies were learning how to go remote and hesitant to hire junior engineers. I started by reading Automate the Boring Stuff with Python by Al Sweigart. I'm not sure it helped land my first job, but I still write and learn software as a hobby years later.

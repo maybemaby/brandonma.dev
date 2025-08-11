@@ -1,0 +1,53 @@
+---
+import type { MarkdownHeading } from "astro";
+import TocTree from "./TocTree.astro";
+import { inspect } from "node:util";
+
+type Props = {
+  headings: MarkdownHeading[];
+};
+
+export type NestedMarkdownHeading = MarkdownHeading & {
+  children: NestedMarkdownHeading[];
+};
+
+const { headings } = Astro.props;
+
+const headingLinks = headings.filter((h) => h.depth > 1);
+
+const nestedHeadings = headingLinks.reduce<NestedMarkdownHeading[]>(
+  (acc, heading) => {
+    const { depth, slug, text } = heading;
+
+    // Create a new nested heading
+    const newHeading: NestedMarkdownHeading = {
+      depth,
+      slug,
+      text,
+      children: [],
+    };
+
+    // If the current heading is a top-level heading, add it to the accumulator
+    if (depth === 2) {
+      acc.push(newHeading);
+    } else {
+      // Otherwise, find the last top-level heading and add it as a child
+      // TODO: Make it find the last heading with the previous depth
+      const lastHeading = acc[acc.length - 1];
+      lastHeading.children.push(newHeading);
+    }
+
+    return acc;
+  },
+  []
+);
+
+console.log(inspect(nestedHeadings, true, 10));
+---
+
+<section id="toc" class="my-6">
+  <h2 id="table-of-contents">Table of Contents</h2>
+  <ul>
+    {nestedHeadings.map((heading) => <TocTree heading={heading} />)}
+  </ul>
+</section>

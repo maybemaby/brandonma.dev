@@ -12,17 +12,6 @@ import Attach from "$lib/components/animejs/attach.svelte"
 import AttachChildren from "$lib/components/animejs/attach-children.svelte"
 import Transition from "$lib/components/animejs/transition.svelte"
 
-# Ways to use Anime.js with Svelte
-<div class="published">
-Published July 31, 2025
-</div>
-
-## Table of Contents
-  - [Anime.js](#animejs)
-  - [Integrating with Svelte](#integrating-with-svelte)
-    - [$effect](#effect)
-    - [Attachments](#attachments)
-    - [Transitions](#transitions)
 
 
 ## Anime.js
@@ -258,6 +247,7 @@ Anime.js animations have a `seek` method which accepts a time to move the animat
 <Showcase>
   <Transition client:visible />
 </Showcase>
+
 
 I feel like Anime.js and Svelte mesh quite well. Feels magical and easy to create nice animations tied in with Svelte primitives.
 There's more that can be done that I haven't explored yet, like you can probably compose with Anime.js timelines in powerful ways.

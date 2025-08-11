@@ -5,25 +5,6 @@ previewText: PostGIS is a PostgreSQL extension that adds features for storing, i
 metaDescription: Learn how to setup Go with PostGIS using pgx and go-geom.
 ---
 
-# Getting Started with PostGIS using Go
-
-<div class="published">
-Published November 7, 2024
-</div>
-
-## Table of Contents
-- [Getting Started with PostGIS using Go](#getting-started-with-postgis-using-go)
-	- [Table of Contents](#table-of-contents)
-	- [Setting up PostGIS](#setting-up-postgis)
-	- [Setting up the Go project](#setting-up-the-go-project)
-	- [The Scenario](#the-scenario)
-		- [Creating the tables](#creating-the-tables)
-		- [Representing the data in Go](#representing-the-data-in-go)
-		- [Adding geometry encoding support to pgx](#adding-geometry-encoding-support-to-pgx)
-		- [Inserting data](#inserting-data)
-		- [Querying data](#querying-data)
-	- [Wrapping up](#wrapping-up)
-
 
 PostGIS is a PostgreSQL extension that adds features for storing, indexing, and querying geospatial data.
 It's pretty nice that you can get these features in Postgres which is already a powerful database. I couldn't

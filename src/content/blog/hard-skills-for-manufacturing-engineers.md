@@ -6,22 +6,6 @@ metaDescription: Technical skills that are useful in becoming a manufacturing en
 draft: false
 ---
 
-# Hard Skills for Prospective Manufacturing Engineers
-
-<div class="published">
-Published May 29, 2025
-</div>
-
-## Table of Contents
-- [Introduction](#introduction)
-- [General Handiness](#general-handiness)
-- [Excel](#excel)
-  - [Bonus: Python](#bonus-python)
-- [Geometric Dimensioning and Tolerancing (GD\&T)](#geometric-dimensioning-and-tolerancing-gdt)
-  - [Metrology](#metrology)
-- [CAD](#cad)
-- [Closing Thoughts](#closing-thoughts)
-  - [Just one soft skill](#just-one-soft-skill)
 
 ## Introduction
 
