@@ -18,7 +18,7 @@
 </script>
 
 <div class="relative" {@attach animeAttachment}>
-  {#each { length: 5 } as _, idx}
+  {#each { length: 5 } as _, idx (idx)}
     <div class="bg-white p-3 rounded-md w-[80px] h-[100px] absolute border">
       Card {idx}
     </div>

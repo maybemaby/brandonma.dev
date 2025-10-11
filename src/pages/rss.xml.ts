@@ -4,7 +4,7 @@ import { getCollection } from "astro:content";
 
 export const prerender = false;
 
-export const GET: APIRoute = async (context) => {
+export const GET: APIRoute = async () => {
   const blog = await getCollection("blog", (e) => !e.data.draft);
   return rss({
     title: "Blog - Brandon Ma",

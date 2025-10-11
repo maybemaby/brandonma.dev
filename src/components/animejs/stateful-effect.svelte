@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { animate, text, stagger } from "animejs";
+  import { animate } from "animejs";
 
   let forward = $state(true);
 

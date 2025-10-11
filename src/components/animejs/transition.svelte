@@ -7,7 +7,7 @@
   function animeTransition(
     node: HTMLElement,
     params: { duration?: number },
-    options: { direction: "in" | "out" | "both" }
+    _options: { direction: "in" | "out" | "both" },
   ): TransitionConfig {
     const duration = params.duration || 1000;
     const animation = animate(node, {
@@ -33,7 +33,7 @@
     <button class="p-2" onclick={() => (todoLength = 0)}> Clear Todos </button>
   </div>
   <ul class="h-[200px]">
-    {#each { length: todoLength } as _, idx}
+    {#each { length: todoLength } as _, idx (idx)}
       <li transition:animeTransition={{ duration: 300 }}>
         Todo {idx + 1}
       </li>

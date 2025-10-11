@@ -8,7 +8,7 @@ interface Props {
   slug: string;
 }
 
-const { title, publishedAt, previewText, slug } = Astro.props;
+const { title, publishedAt, slug } = Astro.props;
 
 // Convert from UTC to PDT
 const displayDate = dayjs(publishedAt).add(7, "hours").format("MMMM DD, YYYY");
