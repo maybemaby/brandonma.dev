@@ -1,7 +1,6 @@
 ---
 import type { MarkdownHeading } from "astro";
 import TocTree from "./TocTree.astro";
-import { inspect } from "node:util";
 
 type Props = {
   headings: MarkdownHeading[];
@@ -41,8 +40,6 @@ const nestedHeadings = headingLinks.reduce<NestedMarkdownHeading[]>(
   },
   [],
 );
-
-console.log(inspect(nestedHeadings, true, 10));
 ---
 
 <section id="toc" class="my-6">

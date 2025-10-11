@@ -4,10 +4,10 @@ import Base from "./base-revamp.astro";
 
 type Props = ComponentProps<typeof Base>;
 
-const { title, description } = Astro.props;
+const { title, description,canonical } = Astro.props;
 ---
 
-<Base title={title} description={description} fitScreen>
+<Base title={title} description={description} canonical={canonical} fitScreen>
   <div class="md:p-16 md:py-16 lg:px-32 p-8">
     <slot />
   </div>

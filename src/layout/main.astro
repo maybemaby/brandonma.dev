@@ -1,6 +1,6 @@
 ---
 import type { ComponentProps } from "astro/types";
-import Base from "./base.astro";
+import Base from "./base-revamp.astro";
 import LogosGithubIcon from "~icons/logos/github-icon";
 import ThemeToggle from "$lib/components/ThemeToggle.astro";
 
@@ -8,10 +8,10 @@ type BaseLayoutProps = ComponentProps<typeof Base>;
 
 interface Props extends BaseLayoutProps {}
 
-const { title, description } = Astro.props;
+const { title, description, canonical } = Astro.props;
 ---
 
-<Base title={title} description={description}>
+<Base title={title} description={description} canonical={canonical}>
   <header
     class="p-2 pt-6 max-w-(--breakpoint-lg) w-full mx-auto flex flex-col gap-2"
   >
