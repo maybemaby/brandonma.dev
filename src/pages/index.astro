@@ -25,7 +25,7 @@ const latestPosts = blogPosts
   .slice(0, 3);
 ---
 
-<Landing>
+<Landing canonical="https://brandonma.dev">
   <div class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-4">
     <div
       class="relative md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
@@ -163,7 +163,7 @@ const latestPosts = blogPosts
         opacity: [0, 1],
         easing: "outExpo",
       },
-      "start"
+      "start",
     )
     .label("title")
     .add(
@@ -177,7 +177,7 @@ const latestPosts = blogPosts
 
         ease: "inOutCirc",
       },
-      "+=100"
+      "+=100",
     )
     .add(
       nameplateParts[0],
@@ -191,7 +191,7 @@ const latestPosts = blogPosts
         ease: "inOutExpo",
         duration: 2000,
       },
-      "title+=1000"
+      "title+=1000",
     );
 
   animate(svg.createDrawable(".corner"), {
@@ -202,7 +202,8 @@ const latestPosts = blogPosts
 
 <style>
   .bg-grid {
-    background-image: repeating-linear-gradient(
+    background-image:
+      repeating-linear-gradient(
         0deg,
         transparent,
         transparent 19px,

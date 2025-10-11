@@ -5,14 +5,13 @@ previewText: Anime.js released it's v4 recently and I gave it a shot for the fir
 metaDescription: How to use Anime.js v4 with Svelte for animations.
 draft: false
 ---
-import Showcase from "$lib/components/animejs/Showcase.astro"
-import StatefulEffect from "$lib/components/animejs/stateful-effect.svelte"
-import Effect from "$lib/components/animejs/effect.svelte"
-import Attach from "$lib/components/animejs/attach.svelte"
-import AttachChildren from "$lib/components/animejs/attach-children.svelte"
-import Transition from "$lib/components/animejs/transition.svelte"
 
-
+import Showcase from "$lib/components/animejs/Showcase.astro";
+import StatefulEffect from "$lib/components/animejs/stateful-effect.svelte";
+import Effect from "$lib/components/animejs/effect.svelte";
+import Attach from "$lib/components/animejs/attach.svelte";
+import AttachChildren from "$lib/components/animejs/attach-children.svelte";
+import Transition from "$lib/components/animejs/transition.svelte";
 
 ## Anime.js
 
@@ -61,7 +60,6 @@ the handy text splitting feature that Anime.js provides:
 </Showcase>
 
 Of course you can also use `$effect` to react to state change.
-
 
 ```svelte
 <script lang="ts">
@@ -113,7 +111,6 @@ animate elements on entrance.
 
 I thought you could also use the return callback to animate on removal, but it seems that the callback is only called **after** the element is removed from the DOM.
 
-
 ```svelte
 <script lang="ts">
   import { type Attachment } from "svelte/attachments";
@@ -152,7 +149,7 @@ I thought you could also use the return callback to animate on removal, but it s
 ```
 
 <Showcase>
-<Attach client:visible />
+  <Attach client:visible />
 </Showcase>
 
 You could also use it to animate all children of a component when it mounts.
@@ -243,11 +240,9 @@ Anime.js animations have a `seek` method which accepts a time to move the animat
 </div>
 ```
 
-
 <Showcase>
   <Transition client:visible />
 </Showcase>
-
 
 I feel like Anime.js and Svelte mesh quite well. Feels magical and easy to create nice animations tied in with Svelte primitives.
 There's more that can be done that I haven't explored yet, like you can probably compose with Anime.js timelines in powerful ways.

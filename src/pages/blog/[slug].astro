@@ -34,7 +34,11 @@ const { Content, headings } = await render(post);
 const dateString = `${post.data.publishedAt.getUTCDate()} ${post.data.publishedAt.toLocaleString("default", { month: "long" })} ${post.data.publishedAt.getUTCFullYear()}`;
 ---
 
-<Main title={`${post.data.title}`} description={metaDescription}>
+<Main
+  title={`${post.data.title}`}
+  description={metaDescription}
+  canonical={`https://brandonma.dev/blog/${post.id}`}
+>
   <div class="mt-8 pb-8 blog-content">
     <h1>{post.data.title}</h1>
     <p>Published {dateString}</p>

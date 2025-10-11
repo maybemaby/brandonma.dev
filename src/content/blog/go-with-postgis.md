@@ -5,15 +5,15 @@ previewText: PostGIS is a PostgreSQL extension that adds features for storing, i
 metaDescription: Learn how to setup Go with PostGIS using pgx and go-geom.
 ---
 
-
 PostGIS is a PostgreSQL extension that adds features for storing, indexing, and querying geospatial data.
 It's pretty nice that you can get these features in Postgres which is already a powerful database. I couldn't
 find much info available on how to integrate this with Go and the [pgx](https://github.com/jackc/pgx) package, so I decided to write this guide.
 
-*Disclaimer: I am not a GIS expert, so I might miss important points about properly storing and indexing
-geospatial data. This post will just cover examples to get started.*
+_Disclaimer: I am not a GIS expert, so I might miss important points about properly storing and indexing
+geospatial data. This post will just cover examples to get started._
 
 ## Setting up PostGIS
+
 For this example, I'll use Docker to bootstrap PostGIS. You can also follow [their documentation](https://postgis.net/documentation/getting_started/) if you want to
 install it another way.
 
@@ -24,6 +24,7 @@ docker run --name postgis-go -e POSTGRES_PASSWORD=postgres \
 ```
 
 ## Setting up the Go project
+
 Create a new Go project or use an existing one. Install the following dependencies:
 
 ```bash
@@ -35,6 +36,7 @@ go get -u github.com/jackc/pgx/v5 github.com/twpayne/go-geom github.com/twpayne/
 - pgx-geom was written by the same author of go-geom and provides a convenient way to encode and decode PostGIS geometries to Go types.
 
 ## The Scenario
+
 To keep it practical, let's imagine an application where you want to let the users save their favorite places on a map.
 They can also save travel routes and pull up locations near this route.
 
@@ -96,9 +98,11 @@ form of longitude and latitude. Instead of using straight lines in calculations,
 uses arcs which is more appropriate for the Earth's surface.
 
 We define a geometric column using this syntax:
+
 ```
 column_name <abstract-type>(<concrete-type>, <SRID>)
 ```
+
 where abstract-type is either `geometry` or `geography`, concrete-type is the specific type such as POINT or LINESTRING,
 and [SRID](https://en.wikipedia.org/wiki/Spatial_reference_system) is the Spatial Reference Identifier.
 
@@ -147,10 +151,10 @@ pgxgeom.Register(ctx, db)
 ```
 
 If you don't do this you'll get an error like this:
+
 ```
 panic: failed to encode args[1]: unable to encode geom.Point{geom0:geom.geom0{layout:1, stride:2, flatCoords:[]float64{45.52516207479769, -73.57524302609725}, srid:4326}} into text format for unknown type (OID 18755): cannot find encode plan
 ```
-
 
 ### Inserting data
 

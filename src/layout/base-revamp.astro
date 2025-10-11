@@ -8,9 +8,10 @@ interface Props {
   title?: string;
   description?: string;
   fitScreen?: boolean;
+  canonical?: string;
 }
 
-const { title, description, fitScreen } = Astro.props;
+const { title, description, fitScreen, canonical } = Astro.props;
 ---
 
 <html lang="en">
@@ -48,6 +49,7 @@ const { title, description, fitScreen } = Astro.props;
       title="Brandon Ma's Blog"
       href="/rss.xml"
     />
+    {canonical && <link rel="canonical" href={canonical} />}
   </head>
   <body class:list={{ "h-[100svh]": fitScreen }}>
     <slot />

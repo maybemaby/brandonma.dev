@@ -25,11 +25,12 @@ The benefit to learning and education is enormous. Being able to hop into "produ
 Debuggers are amazing tools most software developers probably take for granted. Being able to access most internal parts of a system you are troubleshooting in a granular, instant, and interactive manner is a superpower. With a debugger, the main blockers to go from problem to solution are time and motivation.
 
 If I want to troubleshoot something on the manufacturing floor, I frequently have to work around a matrix of factors.
-  - I need to coordinate with people to prioritize production.
-  - I might need tooling/material that costs significant sums of money or takes time to arrive.
-  - The part of the system I troubleshoot may rely on other parts of the system that make it difficult to isolate.
-  - The area of the machine I need to look at may be physically difficult to acccess.
-  - The system probably integrates parts from a variety of vendors, which we have limited information on.
+
+- I need to coordinate with people to prioritize production.
+- I might need tooling/material that costs significant sums of money or takes time to arrive.
+- The part of the system I troubleshoot may rely on other parts of the system that make it difficult to isolate.
+- The area of the machine I need to look at may be physically difficult to acccess.
+- The system probably integrates parts from a variety of vendors, which we have limited information on.
 
 I'm sure there are parallels in software like integrating closed-source APIs from vendors, but generally debuggers are a magical invention I wish there was an equal to in physical engineering.
 
