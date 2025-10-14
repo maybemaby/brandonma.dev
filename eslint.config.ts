@@ -22,6 +22,17 @@ export default defineConfig([
     },
   },
   {
+    files: ["**/*.astro"],
+    languageOptions: {
+      parserOptions: {
+        project: true,
+        parser: tseslint.parser,
+        extraFileExtensions: [".astro"],
+        eslintAstro,
+      },
+    },
+  },
+  {
     rules: {
       "@typescript-eslint/no-unused-vars": [
         "error",
