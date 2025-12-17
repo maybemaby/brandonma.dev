@@ -1,0 +1,177 @@
+---
+title: Embedding a SvelteKit site in PocketBase
+publishedAt: 2025-12-20
+previewText: There's a cool Go feature where you can embed static files in the binary at build time and access them at runtime. So then if you have a static site you can serve it from your Go server without having to ship an extra site of files.
+metaDescription: Learn how to embed a Sveltekit site in a custom PocketBase instance using Go embedding.
+---
+
+import Alert from "$lib/components/Alert.astro"
+
+There's a cool Go feature where you can embed static files in the binary at build time and access them at runtime. So then if you have a static site you can serve it from your Go server without having to ship an extra set of files.
+
+PocketBase is an open source backend-as-a-service written in Go that runs off just a single SQLite database. You can think of it as a mini FireBase or SupaBase alternative. What's really cool about PocketBase is that the author publishes it as either a binary or as a Go package that [you can use to add functionality](https://pocketbase.io/docs/go-overview/).
+
+Combining these features, we can run a PocketBase instance that also serves a SvelteKit static site from a single binary. (It actually doesn't need to be SvelteKit, it could be any static site, but I like SvelteKit.)
+
+<div class="my-4">
+<Alert type="info" message="In many cases you'll want to serve static files from a CDN or reverse proxy for better performance. This setup is for applications where the convenience of a single binary outweighs those concerns." />
+</div>
+
+## Setup
+
+To start with, I setup my project like so:
+
+```bash
+go mod init github.com/maybemaby/pocketsvelte
+go get github.com/pocketbase/pocketbase
+touch main.go
+pnpm dlx sv@latest create .
+pnpm add pocketbase
+```
+
+When running the sv cli, I select the static adapter.
+
+A minimal setup will look something like this:
+
+```
+├── go.mod
+├── go.sum
+├── main.go
+├── package.json
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── src
+├── static
+├── svelte.config.js
+├── tsconfig.json
+└── vite.config.ts
+```
+
+## Go code
+
+Since PocketBase is doing most of the heavy lifting, the Go code we're writing is just to embed the build directory in our binary and then add static file handling to the routing.
+
+```go
+// main.go
+package main
+
+import (
+	"embed"
+	"io/fs"
+	"path/filepath"
+	"strings"
+
+	"github.com/pocketbase/pocketbase"
+	"github.com/pocketbase/pocketbase/core"
+)
+
+//go:embed build/*
+var staticFs embed.FS
+
+func main() {
+	app := pocketbase.New()
+
+	// Get the sub filesystem for the "build" directory
+	siteFs, err := fs.Sub(staticFs, "build")
+
+	if err != nil {
+		panic(err)
+	}
+
+	app.OnServe().BindFunc(func(e *core.ServeEvent) error {
+
+		e.Router.GET("/{path...}", func(e *core.RequestEvent) error {
+			reqPath := e.Request.PathValue("path")
+
+			// root
+			if reqPath == "" || reqPath == "/" {
+				return e.FileFS(siteFs, "index.html")
+			}
+
+			// candidate paths to try, in order
+			// 1) directory index: <path>/index.html
+			// 2) exact path (if it points to a file)
+			// 3) path + .html
+
+			// 1) directory index
+			dirIndex := filepath.Join(reqPath, "index.html")
+			if _, err := fs.Stat(siteFs, dirIndex); err == nil {
+				return e.FileFS(siteFs, dirIndex)
+			}
+
+			// 2) exact file
+			if info, err := fs.Stat(siteFs, reqPath); err == nil && !info.IsDir() {
+				return e.FileFS(siteFs, reqPath)
+			}
+
+			// 3) reqPath + .html
+			if !strings.HasSuffix(reqPath, ".html") {
+				htmlCandidate := reqPath + ".html"
+				if info, err := fs.Stat(siteFs, htmlCandidate); err == nil && !info.IsDir() {
+					return e.FileFS(siteFs, htmlCandidate)
+				}
+			}
+
+			return e.NotFoundError("Not Found", nil)
+			// Alternatively, serve sveltekit fallback file defined in svelte.config.js
+			// return e.FileFS(siteFs, "200.html")
+		})
+
+		return e.Next()
+	})
+
+	if err := app.Start(); err != nil {
+		panic(err)
+	}
+}
+```
+
+## Svelte code
+
+For development purposes, you may want to add a proxy to your Vite server so that API requests go to your running PocketBase instance:
+
+```ts
+// vite.config.ts
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [sveltekit()],
+	server: {
+		 proxy: {
+			'/api': 'http://localhost:8090'
+		 }
+	}
+});
+```
+
+Just to show that this is working, I'll add some Svelte code and an example route.
+
+```svelte
+// src/routes/+page.svelte
+<script lang="ts">
+    import Pocketbase from "pocketbase"
+    const client = new Pocketbase()
+
+    const login = async () => {
+        const res = await client.collection("users").authWithPassword("test@email.com", "testpassword")
+        console.log("Logged in:", res)
+    }
+</script>
+
+<a href="/example">Example</a>
+<button onclick={login}>Login as testuser</button>
+```
+
+## Building and running
+Now if you build your SvelteKit app and run the go server:
+
+```bash
+pnpm run build
+go build -o pocketsvelte
+./pocketsvelte serve
+```
+
+You can navigate to one of your SvelteKit routes and see it served from the PocketBase server, as well as accessing the PocketBase admin UI all from the same binary!
+
+[Source code here.](https://github.com/maybemaby/pocketbase-svelte-embed)

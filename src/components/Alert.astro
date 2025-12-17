@@ -1,0 +1,19 @@
+---
+interface Props {
+  type: "info" | "warning" | "error" | "success";
+  message: string;
+}
+
+const { type, message } = Astro.props;
+---
+
+<div
+  class="p-4 rounded-md w-fit"
+  class:list={{
+    "bg-alert-info text-alert-info-foreground": type === "info",
+    "rounded-md p-4": true,
+  }}
+>
+  <strong class="uppercase">{type}</strong>
+  <p class="font-normal">{message}</p>
+</div>
