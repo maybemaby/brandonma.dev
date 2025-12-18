@@ -1,5 +1,8 @@
 @import "tailwindcss";
-@config '../../tailwind.config.mjs';
+@import "./app-revamp.css";
+/* @config '../../tailwind.config.mjs'; */
+
+@custom-variant dark (&:is(.dark *));
 
 .blog-content h1,
 h2,
@@ -68,7 +71,7 @@ strong {
   @apply max-w-[62ch] font-reading;
 }
 
-.blog-content p > code {
+.blog-content p>code {
   @apply bg-secondary text-foreground px-1 py-0.5 rounded-md;
 }
 
