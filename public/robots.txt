@@ -1,1 +1,7 @@
 Sitemap: https://brandonma.dev/sitemap-index.xml
+User-agent: Amazonbot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: Meta-ExternalAgent
+Disallow: /
