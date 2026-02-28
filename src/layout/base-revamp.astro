@@ -9,9 +9,18 @@ interface Props {
   description?: string;
   fitScreen?: boolean;
   canonical?: string;
+  pageType?: "website" | "article";
 }
 
-const { title, description, fitScreen, canonical } = Astro.props;
+const {
+  title,
+  description,
+  fitScreen,
+  canonical,
+  pageType = "website",
+} = Astro.props;
+
+const canonicalUrl = canonical || new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <html lang="en">
@@ -39,8 +48,8 @@ const { title, description, fitScreen, canonical } = Astro.props;
         "Brandon Ma is a manufacturing engineer and web developer."}
     />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={"https://brandonma.dev"} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content="https://brandonma.dev/OG.png" />
 
     <link
@@ -49,7 +58,7 @@ const { title, description, fitScreen, canonical } = Astro.props;
       title="Brandon Ma's Blog"
       href="/rss.xml"
     />
-    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="canonical" href={canonicalUrl} />
   </head>
   <body class:list={{ "h-svh": fitScreen }}>
     <slot />
