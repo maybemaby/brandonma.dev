@@ -5,7 +5,7 @@ previewText: There's a cool Go feature where you can embed static files in the b
 metaDescription: Learn how to embed a Sveltekit site in a custom PocketBase instance using Go embedding.
 ---
 
-import Alert from "$lib/components/Alert.astro"
+import Alert from "$lib/components/Alert.astro";
 
 There's a cool Go feature where you can embed static files in the binary at build time and access them at runtime. So then if you have a static site you can serve it from your Go server without having to ship an extra set of files.
 
@@ -14,7 +14,10 @@ PocketBase is an open source backend-as-a-service written in Go that runs off ju
 Combining these features, we can run a PocketBase instance that also serves a SvelteKit static site from a single binary. (It actually doesn't need to be SvelteKit, it could be any static site, but I like SvelteKit.)
 
 <div class="my-4">
-<Alert type="info" message="In many cases you'll want to serve static files from a CDN or reverse proxy for better performance. This setup is for applications where the convenience of a single binary outweighs those concerns." />
+  <Alert
+    type="info"
+    message="In many cases you'll want to serve static files from a CDN or reverse proxy for better performance. This setup is for applications where the convenience of a single binary outweighs those concerns."
+  />
 </div>
 
 ## Setup
@@ -132,16 +135,16 @@ For development purposes, you may want to add a proxy to your Vite server so tha
 
 ```ts
 // vite.config.ts
-import { sveltekit } from '@sveltejs/kit/vite';
-import { defineConfig } from 'vite';
+import { sveltekit } from "@sveltejs/kit/vite";
+import { defineConfig } from "vite";
 
 export default defineConfig({
-	plugins: [sveltekit()],
-	server: {
-		 proxy: {
-			'/api': 'http://localhost:8090'
-		 }
-	}
+  plugins: [sveltekit()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:8090",
+    },
+  },
 });
 ```
 
@@ -164,6 +167,7 @@ Just to show that this is working, I'll add some Svelte code and an example rout
 ```
 
 ## Building and running
+
 Now if you build your SvelteKit app and run the go server:
 
 ```bash
