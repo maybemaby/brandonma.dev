@@ -1,4 +1,4 @@
-import { defineConfig } from "astro/config";
+import { defineConfig, envField } from "astro/config";
 import svelte from "@astrojs/svelte";
 import Icons from "unplugin-icons/vite";
 
@@ -25,7 +25,11 @@ export default defineConfig({
       tailwindcss(),
     ],
   },
-
+	env: {
+		schema: {
+			CONTACT_API: envField.string({context: "server", access: "secret"}),
+			CONTACT_API_KEY: envField.string({context: "server", access: "secret"}) 
+		}},
   output: "static",
   adapter: cloudflare({
     imageService: "compile",

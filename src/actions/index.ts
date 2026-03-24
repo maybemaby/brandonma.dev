@@ -1,4 +1,5 @@
 import { ActionError, defineAction } from "astro:actions";
+import { CONTACT_API, CONTACT_API_KEY } from "astro:env/server";
 import { z } from "astro/zod";
 
 export const server = {
@@ -9,11 +10,8 @@ export const server = {
       message: z.string().min(1).max(1000),
     }),
     async handler(input, context) {
-      const apiUrl =
-        import.meta.env.CONTACT_API ?? context.locals.runtime.env.CONTACT_API;
-      const apiKey =
-        import.meta.env.CONTACT_API_KEY ??
-        context.locals.runtime.env.CONTACT_API_KEY;
+      const apiUrl = import.meta.env.CONTACT_API ?? CONTACT_API;
+      const apiKey = import.meta.env.CONTACT_API_KEY ?? CONTACT_API_KEY;
 
       if (!apiUrl || !apiKey) {
         console.error("Missing CONTACT_API or CONTACT_API_KEY");
