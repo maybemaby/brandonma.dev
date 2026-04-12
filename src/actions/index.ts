@@ -6,7 +6,7 @@ export const server = {
   contact: defineAction({
     accept: "form",
     input: z.object({
-      email: z.string().email(),
+      email: z.email(),
       message: z.string().min(1).max(1000),
     }),
     async handler(input, context) {
