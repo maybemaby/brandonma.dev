@@ -27,8 +27,8 @@ export default defineConfig({
   },
   env: {
     schema: {
-      CONTACT_API: envField.string({ context: "server", access: "secret" }),
-      CONTACT_API_KEY: envField.string({ context: "server", access: "secret" }),
+      CONTACT_API: envField.string({ context: "server", access: "secret", optional: true }),
+      CONTACT_API_KEY: envField.string({ context: "server", access: "secret", optional: true }),
     },
   },
   output: "static",
