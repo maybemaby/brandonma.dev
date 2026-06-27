@@ -12,18 +12,18 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.8",
-    "@astrojs/cloudflare": "^13.1.8",
-    "@astrojs/mdx": "^5.0.3",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/cloudflare": "^14.0.1",
+    "@astrojs/mdx": "^7.0.0",
     "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.2",
-    "@astrojs/svelte": "^8.0.4",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/svelte": "^9.0.0",
     "@fontsource-variable/manrope": "^5.2.8",
     "@fontsource/geist-sans": "^5.2.5",
     "@fontsource/gothic-a1": "^5.2.8",
     "@tailwindcss/vite": "^4.2.2",
     "animejs": "^4.3.6",
-    "astro": "^6.1.5",
+    "astro": "^7.0.3",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.18",
     "svelte": "^5.55.3",
@@ -45,7 +45,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "typescript-eslint": "^8.50.0",
     "unplugin-icons": "^22.5.0",
-    "wrangler": "^4.81.1"
+    "wrangler": "^4.105.0"
   },
   "packageManager": "pnpm@10.7.0+sha512.6b865ad4b62a1d9842b61d674a393903b871d9244954f652b8842c2b553c72176b278f64c463e52d40fff8aba385c235c8c9ecf5cc7de4fd78b8bb6d49633ab6"
 }
