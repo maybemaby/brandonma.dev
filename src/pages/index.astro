@@ -26,7 +26,9 @@ const latestPosts = blogPosts
 ---
 
 <Landing canonical="https://brandonma.dev">
-  <div class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-4">
+  <div
+    class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-4 max-w-screen-xl mx-auto"
+  >
     <div
       class="relative md:col-start-1 md:col-span-3 nameplate overflow-clip p-2 bg-grid border-foreground border-2"
     >
@@ -61,13 +63,13 @@ const latestPosts = blogPosts
   </div>
   <!-- Bottom section -->
   <div
-    class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-8 md:gap-4 mt-10"
+    class="grid grid-rows-2 md:grid-rows-none md:grid-cols-5 gap-8 md:gap-4 mt-10 max-w-screen-xl mx-auto"
   >
     <div
-      class="md:col-start-1 md:col-span-2 relative min-h-[320px] max-h-[500px]"
+      class="md:col-start-1 md:col-span-2 relative min-h-[320px] max-h-[500px] p-3"
     >
       <svg
-        class="absolute -top-4 -left-4 w-[40px] h-[40px]"
+        class="absolute top-0 left-0 w-[40px] h-[40px]"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -82,7 +84,7 @@ const latestPosts = blogPosts
       </svg>
 
       <svg
-        class="absolute -bottom-4 right-0 w-[50px] h-[50px] rotate-180"
+        class="absolute bottom-0 right-0 w-[50px] h-[50px] rotate-180"
         viewBox="0 0 100 100"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -121,7 +123,7 @@ const latestPosts = blogPosts
   </div>
   <!-- Social links -->
   <div
-    class="w-full flex items-center justify-center mt-12 text-3xl gap-8 text-accent"
+    class="bg-grid-accent flex items-center mt-12 text-3xl gap-8 text-accent p-2 [&_svg]:bg-background border-2 border-accent max-w-screen-xl mx-auto justify-center"
   >
     <a
       href="https://github.com"
@@ -216,6 +218,23 @@ const latestPosts = blogPosts
         #e55a3478 20px
       );
     background-size: 20px 20px;
+  }
+
+  .bg-grid-accent {
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 19px,
+        hsl(208 18% 21% / 0.5) 20px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 19px,
+        hsl(208 18% 21% / 0.5) 20px
+      );
+    background-size: 40px 40px;
   }
 
   .corner-job {
